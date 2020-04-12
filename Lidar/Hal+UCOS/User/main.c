@@ -1,7 +1,7 @@
 #include "main.h"
 #include "stm32f1xx.h"
-#include "./usart/bsp_usart1.h"
-#include "./led/bsp_led.h"  
+#include "bsp_usart1.h"
+#include "bsp_led.h"  
 
 int main(void)
 {

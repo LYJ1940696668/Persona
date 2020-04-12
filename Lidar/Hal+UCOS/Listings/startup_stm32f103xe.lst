@@ -152,9 +152,9 @@ ARM Macro Assembler    Page 3
    89 00000030 00000000        DCD              DebugMon_Handler ; Debug Monito
                                                             r Handler
    90 00000034 00000000        DCD              0           ; Reserved
-   91 00000038 00000000        DCD              PendSV_Handler ; PendSV Handler
-                                                            
-   92 0000003C 00000000        DCD              SysTick_Handler 
+   91 00000038 00000000        DCD              OS_CPU_PendSVHandler 
+                                                            ; PendSV Handler
+   92 0000003C 00000000        DCD              OS_CPU_SysTickHandler 
                                                             ; SysTick Handler
    93 00000040         
    94 00000040         ; External Interrupts
@@ -340,16 +340,16 @@ K]
 K]
   205 00000014 E7FE            B                .
   206 00000016                 ENDP
-  207 00000016         PendSV_Handler
+  207 00000016         OS_CPU_PendSVHandler
                                PROC
-  208 00000016                 EXPORT           PendSV_Handler             [WEA
-K]
+  208 00000016                 EXPORT           OS_CPU_PendSVHandler           
+  [WEAK]
   209 00000016 E7FE            B                .
   210 00000018                 ENDP
-  211 00000018         SysTick_Handler
+  211 00000018         OS_CPU_SysTickHandler
                                PROC
-  212 00000018                 EXPORT           SysTick_Handler            [WEA
-K]
+  212 00000018                 EXPORT           OS_CPU_SysTickHandler          
+  [WEAK]
   213 00000018 E7FE            B                .
   214 0000001A                 ENDP
   215 0000001A         
@@ -580,7 +580,7 @@ ARM Macro Assembler    Page 9
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=..\output\startup_stm32f103xe.d -o..\output\startup_stm32f103xe.o 
--IF:\Git\Personal\LIdar\Hal+UCOS\Project\RTE -Id:\Keil_v5\ARM\PACK\Keil\STM32F1
+-IF:\Git\Personal\Lidar\Hal+UCOS\Project\RTE -Id:\Keil_v5\ARM\PACK\Keil\STM32F1
 xx_DFP\1.1.0\Device\Include -Id:\Keil_v5\ARM\CMSIS\Include --predefine="__MICRO
 LIB SETA 1" --predefine="__UVISION_VERSION SETA 520" --predefine="STM32F10X_HD 
 
@@ -1175,6 +1175,30 @@ ARM Macro Assembler    Page 8 Alphabetic symbol ordering
 Relocatable symbols
 
 
+OS_CPU_PendSVHandler 00000016
+
+Symbol: OS_CPU_PendSVHandler
+   Definitions
+      At line 207 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
+es\arm\startup_stm32f103xe.s
+   Uses
+      At line 91 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Template
+s\arm\startup_stm32f103xe.s
+      At line 208 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
+es\arm\startup_stm32f103xe.s
+
+OS_CPU_SysTickHandler 00000018
+
+Symbol: OS_CPU_SysTickHandler
+   Definitions
+      At line 211 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
+es\arm\startup_stm32f103xe.s
+   Uses
+      At line 92 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Template
+s\arm\startup_stm32f103xe.s
+      At line 212 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
+es\arm\startup_stm32f103xe.s
+
 PVD_IRQHandler 0000001A
 
 Symbol: PVD_IRQHandler
@@ -1185,18 +1209,6 @@ es\arm\startup_stm32f103xe.s
       At line 96 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Template
 s\arm\startup_stm32f103xe.s
       At line 219 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
-es\arm\startup_stm32f103xe.s
-
-PendSV_Handler 00000016
-
-Symbol: PendSV_Handler
-   Definitions
-      At line 207 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
-es\arm\startup_stm32f103xe.s
-   Uses
-      At line 91 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Template
-s\arm\startup_stm32f103xe.s
-      At line 208 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
 es\arm\startup_stm32f103xe.s
 
 RCC_IRQHandler 0000001A
@@ -1221,6 +1233,12 @@ es\arm\startup_stm32f103xe.s
       At line 136 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
 es\arm\startup_stm32f103xe.s
       At line 259 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
+
+
+
+ARM Macro Assembler    Page 9 Alphabetic symbol ordering
+Relocatable symbols
+
 es\arm\startup_stm32f103xe.s
 
 RTC_IRQHandler 0000001A
@@ -1233,12 +1251,6 @@ es\arm\startup_stm32f103xe.s
       At line 98 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Template
 s\arm\startup_stm32f103xe.s
       At line 221 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
-
-
-
-ARM Macro Assembler    Page 9 Alphabetic symbol ordering
-Relocatable symbols
-
 es\arm\startup_stm32f103xe.s
 
 Reset_Handler 00000000
@@ -1286,6 +1298,12 @@ es\arm\startup_stm32f103xe.s
    Uses
       At line 131 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
 es\arm\startup_stm32f103xe.s
+
+
+
+ARM Macro Assembler    Page 10 Alphabetic symbol ordering
+Relocatable symbols
+
       At line 254 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
 es\arm\startup_stm32f103xe.s
 
@@ -1298,12 +1316,6 @@ es\arm\startup_stm32f103xe.s
    Uses
       At line 146 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
 es\arm\startup_stm32f103xe.s
-
-
-
-ARM Macro Assembler    Page 10 Alphabetic symbol ordering
-Relocatable symbols
-
       At line 269 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
 es\arm\startup_stm32f103xe.s
 
@@ -1317,18 +1329,6 @@ es\arm\startup_stm32f103xe.s
       At line 88 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Template
 s\arm\startup_stm32f103xe.s
       At line 199 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
-es\arm\startup_stm32f103xe.s
-
-SysTick_Handler 00000018
-
-Symbol: SysTick_Handler
-   Definitions
-      At line 211 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
-es\arm\startup_stm32f103xe.s
-   Uses
-      At line 92 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Template
-s\arm\startup_stm32f103xe.s
-      At line 212 in file ..\Libraries\CMSIS\Device\ST\STM32F1xx\Source\Templat
 es\arm\startup_stm32f103xe.s
 
 TAMPER_IRQHandler 0000001A

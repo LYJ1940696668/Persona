@@ -1,5 +1,5 @@
-..\output\bsp_led.o: ..\User\led\bsp_led.c
-..\output\bsp_led.o: ..\User\./led/bsp_led.h
+..\output\bsp_led.o: ..\User\BSP\led\bsp_led.c
+..\output\bsp_led.o: ..\User\BSP\./led/bsp_led.h
 ..\output\bsp_led.o: ..\Libraries\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 ..\output\bsp_led.o: ..\Libraries\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h
 ..\output\bsp_led.o: ..\Libraries\CMSIS\Include\core_cm3.h

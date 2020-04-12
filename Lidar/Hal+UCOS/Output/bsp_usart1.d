@@ -1,5 +1,5 @@
-..\output\bsp_usart1.o: ..\User\usart\bsp_usart1.c
-..\output\bsp_usart1.o: ..\User\usart\bsp_usart1.h
+..\output\bsp_usart1.o: ..\User\BSP\usart\bsp_usart1.c
+..\output\bsp_usart1.o: ..\User\BSP\usart\bsp_usart1.h
 ..\output\bsp_usart1.o: ..\Libraries\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 ..\output\bsp_usart1.o: ..\Libraries\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h
 ..\output\bsp_usart1.o: ..\Libraries\CMSIS\Include\core_cm3.h
